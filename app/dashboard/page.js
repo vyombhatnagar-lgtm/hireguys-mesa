@@ -22,7 +22,7 @@ export default function Dashboard() {
     setDrafting(true);
     for (let k = 0; k < 60; k++) {
       const res = await fetch('/api/reconcile', { method: 'POST' });
-      const out = await res.json();
+      const out = await res.json().catch(() => ({ error: `server returned ${res.status}` }));
       if (!res.ok) { setErr(out.error); break; }
       if (out.remaining === 0) break;
     }
