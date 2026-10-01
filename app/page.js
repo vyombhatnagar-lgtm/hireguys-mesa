@@ -1,6 +1,9 @@
 'use client';
 import { useEffect, useState } from 'react';
 
+const ACCEPT = '.pdf,.docx,.doc,.txt,.md,.rtf,.png,.jpg,.jpeg,.webp';
+const MAX_BYTES = 4 * 1024 * 1024; // Vercel rejects request bodies over ~4.5 MB
+
 const guessRole = (name, fallback) => {
   const n = name.toLowerCase();
   if (n.startsWith('spm_')) return 'SPM';
@@ -17,9 +20,26 @@ export default function Upload() {
   useEffect(() => { fetch('/api/candidates').then((r) => r.json()).then((d) => setMode(d.mode || null)).catch(() => {}); }, []);
   const add = (m) => setLog((l) => [...l, `${new Date().toLocaleTimeString()}  ${m}`]);
 
-  function pick(e) {
-    const files = [...e.target.files];
-    setQueue(files.map((f) => ({ file: f, role: guessRole(f.name, role), state: 'queued', msg: '' })));
+  const [drag, setDrag] = useState(false);
+  // Add files to the queue (from the picker or a drop); skips names already queued and files over Vercel's upload limit
+  function addFiles(list) {
+    const files = [...list];
+    setQueue((q) => {
+      const names = new Set(q.map((x) => x.file.name));
+      const added = files
+        .filter((f) => !names.has(f.name))
+        .map((f) =>
+          f.size > MAX_BYTES
+            ? { file: f, role: guessRole(f.name, role), state: 'error', msg: 'File is over 4 MB. Compress it or save a smaller PDF.' }
+            : { file: f, role: guessRole(f.name, role), state: 'queued', msg: '' }
+        );
+      return [...q.filter((x) => x.state !== 'done'), ...added];
+    });
+  }
+  function onDrop(e) {
+    e.preventDefault();
+    setDrag(false);
+    if (!busy) addFiles(e.dataTransfer.files);
   }
   const setItem = (i, patch) => setQueue((q) => q.map((x, j) => (j === i ? { ...x, ...patch } : x)));
 
@@ -43,7 +63,7 @@ export default function Upload() {
     async function worker() {
       while (next < items.length) {
         const it = items[next++];
-        if (it.state === 'done') continue;
+        if (it.state === 'done' || it.state === 'error') continue;
         setItem(it.i, { state: 'working' });
         const fd = new FormData();
         fd.append('file', it.file);
@@ -84,7 +104,18 @@ export default function Upload() {
         </div>
       )}
       <div className="panel">
-        <div className="row">
+        <label
+          className={`drop ${drag ? 'over' : ''} ${busy ? 'disabled' : ''}`}
+          onDragOver={(e) => { e.preventDefault(); setDrag(true); }}
+          onDragLeave={() => setDrag(false)}
+          onDrop={onDrop}
+        >
+          <input type="file" multiple accept={ACCEPT} onChange={(e) => { addFiles(e.target.files); e.target.value = ''; }} disabled={busy} />
+          <strong>Upload any resume</strong>
+          <span>Drop files here or click to browse</span>
+          <span className="muted small">PDF, Word (.docx), TXT, RTF, or a scan / photo (JPG, PNG). Up to 4 MB each.</span>
+        </label>
+        <div className="row" style={{ marginTop: 12 }}>
           <label>
             Applied role{' '}
             <select value={role} onChange={(e) => { setRole(e.target.value); setQueue((q) => q.map((x) => ({ ...x, role: guessRole(x.file.name, e.target.value) }))); }} disabled={busy}>
@@ -92,8 +123,8 @@ export default function Upload() {
               <option value="SPM">Senior Product Manager</option>
             </select>
           </label>
-          <input type="file" multiple accept=".pdf,.docx,.txt" onChange={pick} disabled={busy} />
-          <button onClick={() => run()} disabled={busy || !queue.length}>{busy ? `Processing ${done}/${queue.length}…` : `Upload & score ${queue.length || ''}`}</button>
+          <button onClick={() => run()} disabled={busy || !queue.some((q) => q.state === 'queued')}>{busy ? `Processing ${done}/${queue.length}…` : `Upload & score ${queue.filter((q) => q.state === 'queued').length || ''}`}</button>
+          {queue.length > 0 && !busy && <button className="secondary" onClick={() => setQueue([])}>Clear list</button>}
         </div>
         <div className="row" style={{ marginTop: 12 }}>
           <button className="secondary" onClick={loadSamples} disabled={busy}>Load 12 sample CVs (demo)</button>
@@ -101,7 +132,8 @@ export default function Upload() {
         </div>
         <p className="muted small">
           Personal details (name, email, phone) are separated at upload and never sent to the scoring, brief or email steps.
-          Files named pm_… / spm_… pre-select their role; you can change any row below.
+          The role above applies to new files (files named pm_… / spm_… pick their own); you can change any row below.
+          Scans and photos are read by Gemini, so they need <code>GEMINI_API_KEY</code>.
         </p>
       </div>
 

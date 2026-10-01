@@ -40,3 +40,8 @@ th { font-size: 12px; color: #6b6b6b; font-weight: 600; }
 .notice { background: #fbf6e6; border-color: #eadba8; }
 .pill.rules { background: #eee; color: #555; margin-left: 6px; }
 code { font-family: ui-monospace, Menlo, monospace; font-size: 12px; }
+.drop { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 28px 16px; border: 2px dashed #c9cfd8; border-radius: 8px; background: #fafbfc; cursor: pointer; text-align: center; }
+.drop:hover, .drop.over { border-color: #1b2a41; background: #f0f3f7; }
+.drop.disabled { opacity: .6; cursor: default; }
+.drop input[type=file] { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.drop strong { font-size: 15px; }
