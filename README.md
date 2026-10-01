@@ -13,6 +13,9 @@ The founder uploads CVs and picks the role each person applied for. The system s
 
 Personal details never reach steps 2–4.
 
+## Uploading resumes
+Drop any resume on the Upload page (or click to browse): PDF, Word (.docx), TXT, Markdown or RTF are read directly. Scanned PDFs and photos (JPG, PNG, WEBP) are transcribed by Gemini, so they need `GEMINI_API_KEY`. Old `.doc` files and files over 4 MB get a clear message. Pick the applied role before adding files (files named `pm_…` / `spm_…` choose their own), and change any row before scoring. The same candidate (same email and role) can't be uploaded twice.
+
 ## Running without keys (rule-based mode)
 With no `GEMINI_API_KEY`, the app still works end to end, like FlatMatch's fallback: `lib/rules.js` scores each CV against the same `rubric.txt` criteria with keyword rules (5 = work-history evidence with a number, 3 = evidence without one, 1 = summary only, 0 = absent), and briefs and emails come from templates. Everything made this way is labelled "rule-based" or "template" in the dashboard. If a Gemini draft call fails, that draft falls back to the template too.
 
