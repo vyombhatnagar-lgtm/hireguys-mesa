@@ -50,7 +50,7 @@ export default function Upload() {
         fd.append('role', it.role);
         try {
           const res = await fetch('/api/upload', { method: 'POST', body: fd });
-          const out = await res.json();
+          const out = await res.json().catch(() => ({ error: `server returned ${res.status}` }));
           if (!res.ok) throw new Error(out.error);
           setItem(it.i, { state: 'done', msg: `PM ${out.pm_score} · SPM ${out.spm_score}` });
           add(`${it.file.name}: scored PM ${out.pm_score} / SPM ${out.spm_score}`);
@@ -64,7 +64,7 @@ export default function Upload() {
     add('Scoring done. Generating briefs and email drafts…');
     for (let k = 0; k < 60; k++) {
       const res = await fetch('/api/reconcile', { method: 'POST' });
-      const out = await res.json();
+      const out = await res.json().catch(() => ({ error: `server returned ${res.status}` }));
       if (!res.ok) { add('Draft error: ' + out.error); break; }
       add(`Drafts: ${out.processed} done, ${out.remaining} remaining`);
       if (out.remaining === 0) break;
