@@ -1,0 +1,17 @@
+Farhan Qureshi
+farhan.q@example.com | +91 99300 22871 | Pune
+
+SUMMARY
+Hands-on logistics operator turned PM.
+
+EXPERIENCE
+Associate Product Manager, TruckPath (Mar 2023 - Present)
+- Worked directly with drivers and dispatch managers to prioritise the trip-sheet app.
+- Fixed a broken vendor file format change over a weekend, restoring 1,200 daily trip uploads by Monday.
+
+Dispatch Coordinator, Deccan 3PL (Jul 2019 - Feb 2023)
+- Coordinated 35 trucks and carrier allocation daily across 3 warehouses.
+- Created a WhatsApp-to-sheet checklist for delivery exceptions; used by 25 colleagues across 2 warehouses.
+
+EDUCATION
+BBA, Symbiosis, 2019

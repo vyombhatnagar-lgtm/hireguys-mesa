@@ -1,0 +1,19 @@
+Meera Raghavan
+meera.r@example.com | +91 98190 66213 | Mumbai
+
+SUMMARY
+Senior PM who started in freight operations.
+
+EXPERIENCE
+Senior Product Manager, PortLink (Mar 2021 - Present)
+- Sole decision-maker for the customs integration product for 3 years, reporting directly to the CEO; no VP layer above me.
+- Prioritised the ICEGATE integration because of my CHA experience with customs holds; cut clearance time by 30% for 120 forwarders.
+- Chose a vendor for OCR that failed on 20% of bills of lading; we rolled back and I introduced a vendor evaluation standard now used across all product teams.
+- Led recovery from a 6-hour outage affecting 90 customers; set up an on-call rotation that reduced P1 incidents by 40%.
+
+Operations Lead, Western CHA (Jan 2016 - Feb 2021)
+- Handled customs clearance documentation for 300+ shipments monthly at JNPT.
+- Built a document checklist on my own initiative that became the company standard across 4 offices.
+
+EDUCATION
+B.Com, Sydenham College, 2015

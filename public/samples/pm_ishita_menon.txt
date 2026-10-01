@@ -1,0 +1,17 @@
+Ishita Menon
+ishita.menon@example.com | +91 97690 55120 | Mumbai
+
+SUMMARY
+Product manager with a background in supply chain analytics and a strong customs domain understanding.
+
+EXPERIENCE
+Product Manager, CargoGrid (Aug 2022 - Present)
+- Owned the shipment tracking module end to end with customers.
+- Stopped the carrier scorecard project after pilot feedback; we changed focus to ETA alerts.
+- Led the migration of the tracking service to a new vendor.
+
+Supply Chain Analyst, FastFreight (Jan 2020 - Jul 2022)
+- Analysed carrier performance data and presented findings to leadership.
+
+EDUCATION
+MBA, NMIMS, 2019

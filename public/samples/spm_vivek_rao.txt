@@ -1,0 +1,18 @@
+Vivek Rao
+vivek.rao@example.com | +91 99870 12845 | Pune
+
+SUMMARY
+Senior product leader in logistics SaaS.
+
+EXPERIENCE
+Senior Product Manager, FleetOS (Jun 2020 - Present)
+- Owned the dispatch product and worked directly with fleet operators and drivers.
+- Built an ETA prediction tool on my own; adopted by 3 other teams and became a core platform feature used by 500 customers.
+- Resolved a failed migration of 2 million trip records within 48 hours with no data loss; added monitoring to prevent a recurrence.
+- Killed the driver rewards feature after 5% adoption and moved the budget to route planning.
+
+Operations Manager, SafeExpress (Apr 2015 - May 2020)
+- Managed carrier allocation for 900 shipments monthly across western India.
+
+EDUCATION
+MBA, IIM Indore, 2015

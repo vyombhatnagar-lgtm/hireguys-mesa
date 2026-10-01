@@ -1,0 +1,17 @@
+Divya Nair
+divya.nair@example.com | +91 97020 88410 | Bengaluru
+
+SUMMARY
+Head of Product with 10 years of experience and deep operational expertise.
+
+EXPERIENCE
+Head of Product, LoadMate (Jan 2022 - Present)
+- Roadmap reviewed by the VP Product and a quarterly approval committee.
+- Led a team of 5 PMs building the shipper portal.
+- Resolved a data-quality incident in shipment tracking.
+
+Product Manager, LoadMate (Jan 2020 - Dec 2021)
+- Created a dashboard for the sales team.
+
+EDUCATION
+B.Tech, NIT Calicut, 2019

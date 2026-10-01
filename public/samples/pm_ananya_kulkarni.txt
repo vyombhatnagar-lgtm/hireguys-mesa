@@ -1,0 +1,18 @@
+Ananya Kulkarni
+ananya.kulkarni@example.com | +91 98200 11234 | Mumbai
+
+SUMMARY
+Operations-first product manager with hands-on freight documentation experience.
+
+EXPERIENCE
+Product Manager, ShipLane Logistics (Jan 2023 - Present)
+- Sole PM for the forwarder portal; worked directly with 40 freight forwarders and ops leads to set the roadmap.
+- Killed the rate-alert feature after usage stayed under 3% for 2 months; moved the team to invoice matching, which reached 60% weekly use.
+- Resolved a customs hold overnight with the CHA at JNPT, releasing 14 containers before the 9am vessel cut-off.
+
+Operations Executive, Konkan CHA Services (Jun 2020 - Dec 2022)
+- Handled bill of lading and shipping bill documentation for 200+ shipments monthly.
+- Built an Excel tracker for pending customs queries on my own initiative; adopted by the 10-person ops team within 3 weeks.
+
+EDUCATION
+B.Com, University of Mumbai, 2020
